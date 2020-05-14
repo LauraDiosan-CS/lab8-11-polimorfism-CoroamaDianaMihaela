@@ -111,7 +111,7 @@ int Console::run()
 
 void Console::modificareResursaFinanciara()
 {
-	cout << "Introduceti toate atributele unei resurse financiare pe care vreti sa o modificati: " << endl;
+	cout << "Introduceti numele resursei pe care vreti sa o modificati " << endl;
 	string str;
 	cin >> str;
 	string str_mod;
@@ -123,27 +123,18 @@ void Console::modificareResursaFinanciara()
 
 	string s;
 
-
-	while (getline(ss, s, ',')) {
-		out.push_back(s);
-	}
-	Financiare* mat = new Financiare(out[0], out[1], stoi(out[2], nullptr, 10), out[3]);
-	while (out.size())
-		out.pop_back();
-
 	stringstream st(str_mod);
 	while (getline(st, s, ',')) {
 		out.push_back(s);
 	}
-	Financiare* mat_2 = new Financiare(out[0], out[1], stoi(out[2], nullptr, 10), out[3]);
-	this->service.updateResursa(*mat, *mat_2);
-	delete mat;
-	delete mat_2;
+	this->service.updateFinanciara(str, out[0], out[1], stoi(out[2], nullptr, 10), out[3]);
+
+
 }
 
 void Console::modificaResursaMateriala()
 {
-	cout << "Introduceti toate atributele unei resurse materiale pe care vreti sa o modificati: " << endl;
+	cout << "Introduceti numele resursei pe care vreti sa o modificati: " << endl;
 	string str;
 	cin >> str;
 	string str_mod;
@@ -155,22 +146,13 @@ void Console::modificaResursaMateriala()
 
 	string s;
 
-
-	while (getline(ss, s, ',')) {
-		out.push_back(s);
-	}
-	Materiale* mat = new Materiale(out[0], out[1], stoi(out[2], nullptr, 10), stoi(out[3], nullptr, 10), stoi(out[4], nullptr, 10));
-	while (out.size())
-		out.pop_back();
-
 	stringstream st(str_mod);
 	while (getline(st, s, ',')) {
 		out.push_back(s);
 	}
-	Materiale* mat_2 = new Materiale(out[0], out[1], stoi(out[2], nullptr, 10), stoi(out[3], nullptr, 10), stoi(out[4], nullptr, 10));
-	this->service.updateResursa(*mat, *mat_2);
-	delete mat;
-	delete mat_2;
+
+	this->service.updateMateriala(str, out[0], out[1], stoi(out[2], nullptr, 10), stoi(out[3], nullptr, 10), stoi(out[4], nullptr, 10));
+
 }
 
 string Console::untilGivenCorectData()

@@ -33,9 +33,31 @@ void Service::addFinanciare(string nume, string data, int valoare, string moneda
 
 }
 
-void Service::updateResursa(Resursa& f1, Resursa& f2)
+void Service::updateMateriala(string nume_vechi, string nume, string data, int valoare, int durataDeViata, int numarDeExemplare)
 {
-	this->repo->update(f1, f2);
+	Resursa* fin = new Materiale(nume, data, valoare, durataDeViata, numarDeExemplare);
+	for (Resursa* p : this->repo->getAll())
+	{
+		Materiale* fin_2 = (Materiale*)p;
+		if (p->getNume() == nume_vechi && typeid(*fin_2) == typeid(*fin))
+		{
+			this->repo->update(*p, *fin);
+		}
+	}
+}
+
+void Service::updateFinanciara(string nume_vechi, string nume, string data, int valoare, string moneda)
+{
+	Resursa* fin = new Financiare(nume, data, valoare, moneda);
+	for (Resursa* p : this->repo->getAll())
+	{
+		Financiare* fin_2 = (Financiare*)p;
+		if (p->getNume() == nume_vechi && typeid(*fin_2)==typeid(*fin))
+		{
+			this->repo->update(*p,*fin);
+		}
+}
+	
 }
 
 vector<Resursa*> Service::getAll()

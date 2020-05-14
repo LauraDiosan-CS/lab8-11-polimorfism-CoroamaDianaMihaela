@@ -388,7 +388,7 @@ void Test::testupdateMatService()
 	service.addFinanciare("Carbune", "12/12/2019", 300, "EURO");
 	Materiale* ev = new Materiale("Carbune", "12/12/2019", 200, 15, 100);
 	Materiale* ev2 = (Materiale*)service.getAll()[0];
-	service.updateResursa(*ev2,*ev);
+	service.updateMateriala("Diamant", "Carbune", "12/12/2019", 200, 15, 100);
 	Materiale* mat = (Materiale*)service.getAll()[0];
 	assert(mat->getNume() == "Carbune");
 	assert(mat->getData() == "12/12/2019");
@@ -407,7 +407,7 @@ void Test::testUpdateFinService()
 	service.addFinanciare("Diamant", "12/12/1995", 200, "RON");
 	Financiare* ev = new Financiare("Carbune", "12/12/2019", 300, "EURO");
 	Financiare* ev2 = (Financiare*)service.getAll()[1];
-	service.updateResursa(*ev2, *ev);
+	service.updateFinanciara("Diamant","Carbune", "12/12/2019", 300, "EURO");
 	Financiare* fin = (Financiare*)service.getAll()[1];
 	assert(fin->getNume() == "Carbune");
 	assert(fin->getData() == "12/12/2019");

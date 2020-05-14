@@ -42,7 +42,8 @@ public:
 		return nou_vector;
 	}
 
-	void updateResursa(Resursa& f1, Resursa& f2);
+	void updateMateriala(string nume_vechi,string nume, string data, int valoare, int durataDeViata, int numarDeExemplare);
+	void updateFinanciara(string nume_vechi, string nume, string data, int valoare, string moneda);
 
 	vector<Resursa*> getAll();
 };
